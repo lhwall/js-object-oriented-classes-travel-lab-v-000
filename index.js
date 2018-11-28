@@ -19,14 +19,16 @@ class Route {
 
 
   blocksTravelled(){
-    let verticalBeginning = Number(this.beginningLocation.vertical)
-    let horizontalBeginning = Number(this.beginningLocation.horizonal)
-    let verticalEnding = Number(this.beginningLocation.vertical)
-    let horizontalEnding = Number(this.beginningLocation.horizonal)
     let eastWest = ['1st Avenue', '2nd Avenue', '3rd Avenue', 'Lexington Avenue', 'Park', 'Madison Avenue', '5th Avenue']
+    let verticalBeginning = Number(this.beginningLocation.vertical)
+    let horizontalBeginning = Number(eastWest.indexOf(this.beginningLocation.horizonal)) + 1
+    let verticalEnding = Number(this.beginningLocation.vertical)
+    let horizontalEnding = Number(eastWest.indexOf(this.beginningLocation.horizonal)) + 1
+
 
     let verticalTotal = Math.abs(verticalBeginning - verticalEnding)
-    let horizontalTotal = Math.abs()
+    let horizontalTotal = Math.abs(horizontalBeginning - horizontalEnding)
+    return verticalTotal + horizontalTotal
   }
 
 }
