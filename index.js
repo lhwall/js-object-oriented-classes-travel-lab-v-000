@@ -21,14 +21,23 @@ class Route {
   blocksTravelled(){
     let eastWest = ['1st Avenue', '2nd Avenue', '3rd Avenue', 'Lexington Avenue', 'Park', 'Madison Avenue', '5th Avenue']
     let verticalBeginning = Number(this.beginningLocation.vertical)
-    let horizontalBeginning = Number(eastWest.indexOf(this.beginningLocation.horizonal)) + 1
-    let verticalEnding = Number(this.beginningLocation.vertical)
-    let horizontalEnding = Number(eastWest.indexOf(this.beginningLocation.horizonal)) + 1
-
+    let horizontalBeginning = (eastWest.indexOf(this.beginningLocation.horizontal) + 1)
+    let verticalEnding = Number(this.endingLocation.vertical)
+    let horizontalEnding = (eastWest.indexOf(this.endingLocation.horizontal) + 1)
 
     let verticalTotal = Math.abs(verticalBeginning - verticalEnding)
     let horizontalTotal = Math.abs(horizontalBeginning - horizontalEnding)
-    return verticalTotal + horizontalTotal
+    let fullTotal = verticalTotal + horizontalTotal
+    return fullTotal
   }
+
+estimatedTime(peak){
+  let rideTime = 0
+  if (peak) {
+    rideTime = (this.blocksTravelled() / 2)}
+  else {
+    rideTime = (this.blocksTravelled() / 3)}
+  return rideTime
+}
 
 }
